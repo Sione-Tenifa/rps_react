@@ -1,9 +1,9 @@
 import React from 'react'
-import { Table, Image, Container } from "semantic-ui-react";
-import './App.css';
-import Paper from './paper.png'
-import Rock from './rock.png'
-import Scissors from './scissors.jpeg'
+import { Image, Container } from "semantic-ui-react";
+import '../App.css';
+import Paper  from '../paper.png'
+import Rock from '../rock.png'
+import Scissors from '../scissors.jpeg'
 
 
 class Game extends React.Component{
@@ -21,10 +21,11 @@ class Game extends React.Component{
         return { option: "TIE", computer: rand, user: choice, }
       }
       if (rand == "scissors") {
-        return { option: "You Win!", computer: rand, user: choice,  }
+        return { option: "You Win!", computer: rand, user: choice, win: + 1,  }
+        
       }
       if (rand == "paper"){
-        return { option: "You Lose!", computer: rand, user: choice, }
+        return { option: "You Lose!", computer: rand, user: choice, lose: + 1, }
       }
     }) 
   }
@@ -40,11 +41,11 @@ class Game extends React.Component{
       }
       if (rand == "rock") {
         // return { option: "You Win" }
-        return { option: "You Win!", computer: rand, user: choice,  }
+        return { option: "You Win!", computer: rand, user: choice, win: + 1,  }
 
       }
       if (rand == "scissors"){
-        return { option: "You Lose!", computer: rand, user: choice,  }
+        return { option: "You Lose!", computer: rand, user: choice, lose: + 1 }
       }
     }) 
   }
@@ -58,36 +59,30 @@ class Game extends React.Component{
         return { option: "TIE", computer: rand, user: choice, }
       }
       if (rand == "paper") {
-        return { option: "You Win", computer: rand, user: choice, }
+        return { option: "You Win", computer: rand, user: choice, win: + 1, }
       }
       if (rand == "rock"){
-        return { option: 'You Lose', computer: rand, user: choice,  }
+        return { option: 'You Lose', computer: rand, user: choice,  lose: + 1}
       }
     }) 
   }
   render(){
     return(
-    <header className='App-header'>
-      <Table.Row>
-        <Table.Cell>
-          {/* <Image src={Rock} onClick={(e) => this.handleRock(e)}/>
-          <Image src={Paper} onClick={(e) => this.handlePaper(e)}/>
-          <Image src={Scissors} onClick={(e) => this.handleScissors(e)}/> */}
+    <header>
+    <body className='body'>
 
-          {/* <Button src={Rock} onClick={(e) => this.handleRock(e)}> Rock </Button>
-          <Button src={Paper} onClick={(e) => this.handlePaper(e)}> Paper </Button>
-          <Button src={Scissors} onClick={(e) => this.handleScissors(e)}> Scissors </Button> */}
-        </Table.Cell>
-      </Table.Row> 
           <Container style={{display: 'flex', flexDirection: 'row', justifyContent: 'center',  }}>
               <Image src={Rock} onClick={(e) => this.handleRock(e)}/>
               <Image src={Paper} onClick={(e) => this.handlePaper(e)}/>
               <Image src={Scissors} onClick={(e) => this.handleScissors(e)}/>
           </Container >
+      <p style={{ color: 'white', fontSize: 30, display: 'flex', flexDirection: 'row', justifyContent: 'center', backgroundColor:'black'}}>{this.state.option}</p>
+      <p style={{ color: 'white', fontSize: 30, display: 'flex', flexDirection: 'row', justifyContent: 'center', backgroundColor:'black'}}>You Chose-{this.state.user}</p>
+      <p style={{ color: 'white', fontSize: 30, display: 'flex', flexDirection: 'row', justifyContent: 'center', backgroundColor:'black'}}>Computer Chose-{this.state.computer}</p>
+      <p style={{ color: 'white', fontSize: 30, display: 'flex', flexDirection: 'row', justifyContent: 'center', backgroundColor:'black'}}>Your score-{this.state.win}</p>
+      <p style={{ color: 'white', fontSize: 30, display: 'flex', flexDirection: 'row', justifyContent: 'center', backgroundColor:'black'}}>Computer's score-{this.state.lose}</p>
 
-      <p>{this.state.option}</p>
-      <p>You Chose-{this.state.user}</p>
-      <p>Computer Chose-{this.state.computer}</p>
+    </body>
 
     </header>
 

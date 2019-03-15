@@ -32,6 +32,18 @@
   to {
     transform: rotate(360deg);
   }
+
 }
 
+.body {
+  background-image: url("jazz.jpg");
+  background-color: #cccccc;
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+ }
 
+ .text {
+   color: azure
+ }

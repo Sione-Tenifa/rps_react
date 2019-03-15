@@ -1,37 +1,48 @@
-import React, { Component } from 'react';
-import { Button,} from "semantic-ui-react";
-import Game from './Game'
+import React, { Fragment } from 'react';
+import { Container,} from "semantic-ui-react";
+import { Route, Switch} from 'react-router-dom';
 import './App.css';
-import './rock.png';
+import Home from './components/Home';
+import About from './components/About';
+import Navbar from './components/Navbar'
+import Game from "./components/Game";
+import NoMatch from './components/NoMatch'
 
-class App extends Component {
 
+const App = () => (
 
-  state = { 
-    games: [ 
-      {id: 1, name: "rock", },
-      {id: 2, name: "paper", },
-      {id: 3, name: "scissors",} 
-    ]
-      
-   }
+    <Fragment>
+    < Navbar/> 
+      <Container>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path='/about' component={About}/>
+          <Route exact path="/game" component={Game} />
+          <Route component={NoMatch}/>
+        </Switch>
+      </Container>
+    </Fragment>
 
+        
+)
+
+export default App;
   
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          Rock, Paper, Scissors 
-        </header>
+//   render() {
+//     return (
+//       <div className="App">
+//         <header className="App-header">
+//           Rock, Paper, Scissors 
+//         </header>
 
-          <Game games={this.state.games}/>
+//           <Game games={this.state.games}/>
 
 
       
           
-      </div>
-    );
-  }
-}
+//       </div>
+//     );
+//   }
+// }
 
-export default App;
+
